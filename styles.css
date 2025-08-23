@@ -2,34 +2,124 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: monospace;
 }
 
 body {
   width: 100%;
   height: 0;
-  background-color: gray;
+  background-color: whitesmoke;
   display: flex;
 }
 
-.containerTwo {
+.content-container {
   width: 100%;
   height: 100vh;
-  background-color: gray;
+  overflow: none;
   display: flex;
 }
-.containerTwo .calc-container {
-  width: 300px;
-  height: 450px;
+.content-container .calc-container {
+  width: 310px;
+  height: 460px;
   border-radius: 7px;
-  position: relative;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.2);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  min-width: 152px;
-  min-height: 214px;
-  max-width: 285px;
-  max-height: 448px;
-  background-color: rgb(255, 11, 11);
+  background-color: rgb(40, 40, 40);
+}
+.content-container .calc-container:hover {
+  cursor: pointer;
+}
+.content-container .calc-container:focus {
+  box-shadow: 0 0 15px 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+.content-container .calc-container .wrapper {
+  width: 300px;
+  height: 450px;
+  border-radius: inherit;
+  position: static;
+  background-color: rgb(70, 70, 97);
+}
+.content-container .calc-container .wrapper .header {
+  width: 100%;
+  height: 25px;
+  border-radius: inherit;
+  position: sticky;
+  background-color: green;
+}
+.content-container .calc-container .wrapper .header:hover {
+  cursor: grab;
+}
+.content-container .calc-container .wrapper .header:active {
+  cursor: grabbing;
+}
+.content-container .calc-container .wrapper .display {
+  width: 100%;
+  height: 85px;
+  background-color: pink;
+}
+.content-container .calc-container .wrapper .display .expression {
+  width: 100%;
+  height: 20px;
+  background-color: gold;
+}
+.content-container .calc-container .wrapper .display .result {
+  width: 100%;
+  height: 65px;
+}
+.content-container .calc-container .wrapper .buttons {
+  width: 100%;
+  height: 340px;
+  border-radius: 5px;
+  background-color: rgb(31, 31, 31);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.content-container .calc-container .wrapper .buttons .row {
+  width: 100%;
+  height: 19.4%;
+  display: flex;
+  gap: 2px;
+}
+.content-container .calc-container .wrapper .buttons .row .button {
+  width: 25%;
+  height: 100%;
+  border-radius: 5px;
+  border: none;
+  font-size: 18px;
+  font-weight: 100;
+  color: rgb(255, 255, 255);
+}
+.content-container .calc-container .wrapper .buttons .operators {
+  background-color: rgb(59, 59, 59);
+}
+.content-container .calc-container .wrapper .buttons .operators:hover {
+  background-color: rgb(70, 70, 70);
+}
+.content-container .calc-container .wrapper .buttons .operators:active {
+  background-color: rgb(59, 59, 59);
+}
+.content-container .calc-container .wrapper .buttons .numbers {
+  background-color: rgb(70, 70, 70);
+}
+.content-container .calc-container .wrapper .buttons .numbers:hover {
+  background-color: rgb(59, 59, 59);
+}
+.content-container .calc-container .wrapper .buttons .numbers:active {
+  background-color: rgb(46, 46, 46);
+}
+.content-container .calc-container .wrapper .buttons #equal {
+  background-color: rgb(255, 116, 91);
+}
+.content-container .calc-container .wrapper .buttons #equal:hover {
+  background-color: rgb(218, 99, 78);
 }
 
 /*# sourceMappingURL=styles.css.map */
