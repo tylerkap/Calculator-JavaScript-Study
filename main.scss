@@ -1,8 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+
+
+$base-color: rgb(30, 30, 30);
+$num-btn: rgb(60, 60, 60);
+$operator-btn: rgb(48, 48, 48);
+$highlight: rgb(255, 129, 106);
+$white-text: rgb(255, 255, 255);
+$secondary-text: rgb(225, 225, 225);
+
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: monospace;
+    font-family: 'Monstserrat', sans-serif;
 }
 
 body {
@@ -50,7 +63,7 @@ body {
         // max-width: 285px;
         // max-height: 448px;
 
-        background-color: rgb(40, 40, 40);
+        background-color: $base-color;
 
         &:hover {
             cursor: pointer;
@@ -66,7 +79,7 @@ body {
             height: 450px;
             border-radius: inherit;
             position: static;
-            background-color: rgb(70, 70, 97);
+            // background-color: rgb(70, 70, 97);
             //z-index: 1;
 
 
@@ -75,7 +88,7 @@ body {
                 height: 25px;
                 border-radius: inherit;
                 position: sticky;
-                background-color: green;
+                // background-color: rgb(170, 65, 255);
 
                 &:hover {
                     cursor: grab;
@@ -90,20 +103,33 @@ body {
             .display {
                 width: 100%;
                 height: 85px;
-                background-color: pink;
 
 
                 .expression {
                     width: 100%;
                     height: 20px;
-                    background-color: gold;
+                    // background-color: gold;
+                    color: $white-text;
+
+                    padding-right: 10px;
+
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+
                 }
 
                 .result {
                     width: 100%;
                     height: 65px;
+                    color: $white-text;
+                    font-size: 2.5rem;
+                    font-weight: 500;
+                    padding-right: 10px;
 
-
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
 
                 }
 
@@ -112,20 +138,25 @@ body {
                 width: 100%;
                 height: 340px;
                 border-radius: 5px;
-                background-color: rgb(31, 31, 31);
+                // background-color: rgb(31, 31, 31);
 
                 display: flex;
                 flex-direction: column;
-                gap: 2px;
+                gap: 3px;
+
+                i {
+                    font-weight: 550;
+                    font-size: 0.8rem;
+                }
 
 
                 .row {
                     width: 100%;
-                    height: 19.4%;
+                    height: 19%;
                     // background-color: rgb(44, 44, 44);
                     
                     display: flex;
-                    gap: 2px;
+                    gap: 3px;
 
                     .button {
                         width: 25%;
@@ -133,9 +164,16 @@ body {
                         border-radius: 5px;
                         border: none;
 
-                        font-size: 18px;
+                        font-size: 0.9rem;
                         font-weight: 100;
-                        color: rgb(255, 255, 255);
+                        color: $white-text;
+                        cursor: pointer;
+
+
+                        .num-style {
+                            font-size: 1.2rem;
+                            font-weight: 100;
+                        }
                         
 
                     }
@@ -145,23 +183,23 @@ body {
 
 
                 .operators  {
-                    background-color: rgb(59, 59, 59);
+                    background-color: $operator-btn;
 
                     &:hover {
-                        background-color: rgb(70, 70, 70);
+                        background-color: $num-btn;
                     }
 
 
                     &:active {
-                        background-color: rgb(59, 59, 59);
+                        background-color: $operator-btn;
                     }
                 }
 
                 .numbers {
-                    background-color: rgb(70, 70, 70);
+                    background-color: $num-btn;
 
                     &:hover {
-                        background-color: rgb(59, 59, 59);
+                        background-color: $operator-btn;
                     }
 
                     &:active {
@@ -170,10 +208,15 @@ body {
                 }
 
                 #equal {
-                    background-color: rgb(255, 116, 91);
+                    background-color: $highlight;
 
                     &:hover {
-                        background-color: rgb(218, 99, 78)
+                        background-color: rgba(255, 135, 114, 0.849);
+
+                    }
+
+                    &:active {
+                        background-color: rgba(231, 122, 103, 0.914);
                     }
                 }
             }

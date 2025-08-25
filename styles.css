@@ -1,8 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: monospace;
+  font-family: "Monstserrat", sans-serif;
 }
 
 body {
@@ -30,7 +31,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgb(40, 40, 40);
+  background-color: rgb(30, 30, 30);
 }
 .content-container .calc-container:hover {
   cursor: pointer;
@@ -44,14 +45,12 @@ body {
   height: 450px;
   border-radius: inherit;
   position: static;
-  background-color: rgb(70, 70, 97);
 }
 .content-container .calc-container .wrapper .header {
   width: 100%;
   height: 25px;
   border-radius: inherit;
   position: sticky;
-  background-color: green;
 }
 .content-container .calc-container .wrapper .header:hover {
   cursor: grab;
@@ -62,64 +61,85 @@ body {
 .content-container .calc-container .wrapper .display {
   width: 100%;
   height: 85px;
-  background-color: pink;
 }
 .content-container .calc-container .wrapper .display .expression {
   width: 100%;
   height: 20px;
-  background-color: gold;
+  color: rgb(255, 255, 255);
+  padding-right: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 .content-container .calc-container .wrapper .display .result {
   width: 100%;
   height: 65px;
+  color: rgb(255, 255, 255);
+  font-size: 2.5rem;
+  font-weight: 500;
+  padding-right: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 .content-container .calc-container .wrapper .buttons {
   width: 100%;
   height: 340px;
   border-radius: 5px;
-  background-color: rgb(31, 31, 31);
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 3px;
+}
+.content-container .calc-container .wrapper .buttons i {
+  font-weight: 550;
+  font-size: 0.8rem;
 }
 .content-container .calc-container .wrapper .buttons .row {
   width: 100%;
-  height: 19.4%;
+  height: 19%;
   display: flex;
-  gap: 2px;
+  gap: 3px;
 }
 .content-container .calc-container .wrapper .buttons .row .button {
   width: 25%;
   height: 100%;
   border-radius: 5px;
   border: none;
-  font-size: 18px;
+  font-size: 0.9rem;
   font-weight: 100;
   color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+.content-container .calc-container .wrapper .buttons .row .button .num-style {
+  font-size: 1.2rem;
+  font-weight: 100;
 }
 .content-container .calc-container .wrapper .buttons .operators {
-  background-color: rgb(59, 59, 59);
+  background-color: rgb(48, 48, 48);
 }
 .content-container .calc-container .wrapper .buttons .operators:hover {
-  background-color: rgb(70, 70, 70);
+  background-color: rgb(60, 60, 60);
 }
 .content-container .calc-container .wrapper .buttons .operators:active {
-  background-color: rgb(59, 59, 59);
+  background-color: rgb(48, 48, 48);
 }
 .content-container .calc-container .wrapper .buttons .numbers {
-  background-color: rgb(70, 70, 70);
+  background-color: rgb(60, 60, 60);
 }
 .content-container .calc-container .wrapper .buttons .numbers:hover {
-  background-color: rgb(59, 59, 59);
+  background-color: rgb(48, 48, 48);
 }
 .content-container .calc-container .wrapper .buttons .numbers:active {
   background-color: rgb(46, 46, 46);
 }
 .content-container .calc-container .wrapper .buttons #equal {
-  background-color: rgb(255, 116, 91);
+  background-color: rgb(255, 129, 106);
 }
 .content-container .calc-container .wrapper .buttons #equal:hover {
-  background-color: rgb(218, 99, 78);
+  background-color: rgba(255, 135, 114, 0.849);
+}
+.content-container .calc-container .wrapper .buttons #equal:active {
+  background-color: rgba(231, 122, 103, 0.914);
 }
 
 /*# sourceMappingURL=styles.css.map */
