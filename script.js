@@ -27,6 +27,10 @@ function power(base, exponent) {
     }
 }
 
+
+
+//Below is the code for the drag and drop feature
+
 let newX = 0,  newY = 0, startX = 0, startY = 0;
 let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 
@@ -67,11 +71,79 @@ function mouseUp(e) {
     document.removeEventListener('mousemove', mouseMove);
 }
 
+function removeNum(string) {
+    
+    if (string.length === 1) {
+        string = "0";
+        return string;
+    }
+    else {
+            
+        let temp = string.split('');
+        temp.pop(); 
+        console.log(temp);
+        
+        return temp.join('');
+    }
+}
 
-// calc.addEventListener('click', () => {
-//     calc.style.top = "500px";
-//     calc.style.left = "0px";
 
-//     alert("Is this working?");
-// });
 
+//This code impelements the function of the calculator
+
+let expressionArray = [];
+let display = 0;
+let currentNum = 0;
+
+let resultDisplay = document.querySelector(".result");
+let expressionDisplay = document.querySelector(".expression");
+let numbers = document.querySelectorAll(".numbers");
+let clearEntry = document.querySelector("#clear-entry");
+let deleteBtn = document.querySelector("#delete");
+
+
+clearEntry.addEventListener('click', () => {
+    currentNum = 0;
+    resultDisplay.textContent = "0";
+
+    console.log(`3: This is the current number: ${currentNum}`);
+});
+
+deleteBtn.addEventListener('click', () => {
+    let tempStr = resultDisplay.textContent.trim();
+    let newString = removeNum(tempStr);
+    console.log(tempStr);
+    console.log(newString);
+
+    currentNum = Number(newString);
+    resultDisplay.textContent = newString;
+});
+
+
+
+
+
+numbers.forEach((button) => {
+    button.addEventListener('click', () => {
+        resultDisplay.textContent.trim()
+        console.log(button.getAttribute("id"));
+
+        let string = button.getAttribute("id");
+        let num = Number(string.split("").pop());
+
+        if(resultDisplay.textContent.trim() === "0") {
+            currentNum = num;
+            resultDisplay.textContent = currentNum.toString();
+            console.log(`1: This is the current number: ${currentNum}`)
+        }
+        else {
+            resultDisplay.textContent = resultDisplay.textContent + num;
+            currentNum = Number(resultDisplay.textContent);
+
+            console.log(`2: This is the current number: ${currentNum}`)
+        }
+
+        resultDisplay.textContent = currentNum.toString();
+
+    })
+});
