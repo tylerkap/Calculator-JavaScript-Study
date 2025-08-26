@@ -11,7 +11,18 @@ function multiply(a, b) {
 }
 
 function division(a, b) {
-    return a / b;
+    let result = a / b;
+
+    // alert(result);
+
+    // if (result % 1 !== 0) {
+    //     alert("HIS LS:KDJFL");
+    //     result = result.toFixed(2);
+    // }
+
+    // alert(result);
+
+    return result;
 }
 
 function power(base, exponent) {
@@ -91,7 +102,7 @@ function removeNum(string) {
 
 //This code impelements the function of the calculator
 
-let expressionArray = [];
+let previousNum = 0;
 let display = 0;
 let currentNum = 0;
 
@@ -100,6 +111,14 @@ let expressionDisplay = document.querySelector(".expression");
 let numbers = document.querySelectorAll(".numbers");
 let clearEntry = document.querySelector("#clear-entry");
 let deleteBtn = document.querySelector("#delete");
+let plusBtn = document.querySelector("#plus");
+let equalBtn = document.querySelector("#equal");
+let subtractBtn = document.querySelector("#subtract");
+let multiplyBtn = document.querySelector("#multiply");
+let divideBtn = document.querySelector("#divide");
+let clearBtn = document.querySelector("#clear");
+let posNegBtn = document.querySelector("#positive-negative");
+let decimalBtn = document.querySelector("#decimal");
 
 
 clearEntry.addEventListener('click', () => {
@@ -107,6 +126,14 @@ clearEntry.addEventListener('click', () => {
     resultDisplay.textContent = "0";
 
     console.log(`3: This is the current number: ${currentNum}`);
+});
+
+clearBtn.addEventListener('click', () => {
+    previousNum = 0;
+    currentNum = 0;
+    expressionDisplay.textContent = "";
+    resultDisplay.textContent = "0";
+
 });
 
 deleteBtn.addEventListener('click', () => {
@@ -119,9 +146,22 @@ deleteBtn.addEventListener('click', () => {
     resultDisplay.textContent = newString;
 });
 
+posNegBtn.addEventListener('click', () => {
+    if (resultDisplay.textContent[0] === "-") {
+        currentNum = Math.abs(currentNum);
+        resultDisplay.textContent = currentNum.toString();
+    }
+    else {
+        currentNum = currentNum * -1;
+        resultDisplay.textContent = currentNum.toString();
+    }
+});
 
-
-
+decimalBtn.addEventListener('click', () => {
+    if (!resultDisplay.textContent.includes(".")) {
+        resultDisplay.textContent += ".";
+    }
+});
 
 numbers.forEach((button) => {
     button.addEventListener('click', () => {
@@ -130,8 +170,17 @@ numbers.forEach((button) => {
 
         let string = button.getAttribute("id");
         let num = Number(string.split("").pop());
+    
 
-        if(resultDisplay.textContent.trim() === "0") {
+
+        if (expressionDisplay.textContent.includes("=")) {
+            previousNum = 0;
+            currentNum = num;
+            expressionDisplay.textContent = "";
+            resultDisplay.textContent =  currentNum.toString();
+            
+        }
+        else if (resultDisplay.textContent.trim() === "0") {
             currentNum = num;
             resultDisplay.textContent = currentNum.toString();
             console.log(`1: This is the current number: ${currentNum}`)
@@ -147,3 +196,73 @@ numbers.forEach((button) => {
 
     })
 });
+
+plusBtn.addEventListener('click', () => {
+    expressionDisplay.textContent = `${currentNum} +`
+    previousNum = currentNum;
+    currentNum = 0;
+    resultDisplay.textContent = "0";
+});
+
+subtractBtn.addEventListener('click', () => {
+    expressionDisplay.textContent = `${currentNum} -`
+    previousNum = currentNum;
+    currentNum = 0;
+    resultDisplay.textContent = "0";
+});
+
+multiplyBtn.addEventListener('click', () => {
+    expressionDisplay.textContent = `${currentNum} x`
+    previousNum = currentNum;
+    currentNum = 0;
+    resultDisplay.textContent = "0";
+});
+
+divideBtn.addEventListener('click', () => {
+    expressionDisplay.textContent = `${currentNum} /`
+    previousNum = currentNum;
+    currentNum = 0;
+    resultDisplay.textContent = "0";
+});
+
+
+
+
+equalBtn.addEventListener('click', () => {
+
+    if (expressionDisplay.textContent.includes("=")) {
+
+    }
+    else if (expressionDisplay.textContent.includes("x")) {
+        let result = multiply(previousNum, currentNum);
+        resultDisplay.textContent = result.toString();
+        expressionDisplay.textContent += ` ${currentNum} =`;
+        currentNum = result;
+        previousNum = 0;
+    }
+    else if (expressionDisplay.textContent.includes("/")) {
+        let result = division(previousNum, currentNum);
+        resultDisplay.textContent = result.toString();
+        expressionDisplay.textContent += ` ${currentNum} =`;
+        currentNum = result;
+        previousNum = 0;
+    }
+    else if (expressionDisplay.textContent.includes("+")) {
+        let result = addition(previousNum, currentNum);
+        resultDisplay.textContent = result.toString();
+        expressionDisplay.textContent += ` ${currentNum} =`;
+        currentNum = result;
+        previousNum = 0;
+    }
+    else if (expressionDisplay.textContent.includes("-")) {
+        let result = subtraction(previousNum, currentNum);
+        resultDisplay.textContent = result.toString();
+        expressionDisplay.textContent += ` ${currentNum} =`;
+        currentNum = result;
+        previousNum = 0;
+    }
+   
+   
+});
+
+
