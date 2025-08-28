@@ -38,6 +38,54 @@ function power(base, exponent) {
     }
 }
 
+function addCommas(string) {
+    if (string.includes(",")) {
+
+        string = removeCommas(string);
+    }
+    
+    if (string.length > 3) {
+        let count = 0;
+        
+        
+        for (let i = string.length - 1; i >= 1; i--) {
+            if (count === 2) {
+                string = string.slice(0, i) + ',' + string.slice(i);
+                count = 0;
+            }
+            else {
+                count++
+            }
+        }
+
+        return string;
+    }
+    else {
+        return string;
+    }
+}
+
+function removeCommas(string) {
+    let tempArr = string.split('');
+    
+    tempArr.forEach((char, index) => {
+        if (char === ",") {
+            tempArr.splice(index, 1);
+        }
+    })
+
+    let newString = tempArr.join('');
+
+    return newString;
+}
+
+let testStr = "100000";
+let newString = addCommas(testStr);
+let removeC = removeCommas(newString);
+
+console.log(newString);
+console.log(Number(removeC));
+
 
 
 //Below is the code for the drag and drop feature
@@ -114,6 +162,8 @@ let posNegBtn = document.querySelector("#positive-negative");
 let decimalBtn = document.querySelector("#decimal");
 let squareRootBtn = document.querySelector("#square-root");
 let powerBtn = document.querySelector("#power");
+let fractionBtn = document.querySelector("#fraction");
+let percentageBtn = document.querySelector("#percentage");
 
 
 clearEntry.addEventListener('click', () => {
@@ -152,7 +202,7 @@ posNegBtn.addEventListener('click', () => {
     }
     else {
         currentNum = Number(resultDisplay.textContent);
-        currentNum = currentNum * -1;
+        currentNum = currentNum * - 1;
         resultDisplay.textContent = currentNum.toString();
     }
 });
@@ -183,6 +233,28 @@ powerBtn.addEventListener('click', () => {
     resultDisplay.textContent = "0";
 })
 
+fractionBtn.addEventListener('click', () => {
+    let num = Number(resultDisplay.textContent);
+    
+    if (num !== 0) {
+        let result = 1 / num;
+        //expressionDisplay.textContent = `1 / ${num} =`;
+        resultDisplay.textContent = result.toString();
+    }
+
+})
+
+percentageBtn.addEventListener('click', () => {
+    let num = Number(resultDisplay.textContent);
+   
+    if (num > 0) {
+        let result = num / 100;
+    
+        //expressionDisplay.textContent = `${num} / 100 =`;
+        resultDisplay.textContent = result.toString();
+    }
+})
+
 numbers.forEach((button) => {
     button.addEventListener('click', () => {
         resultDisplay.textContent.trim()
@@ -198,37 +270,37 @@ numbers.forEach((button) => {
             resultDisplay.textContent = num.toString();
         }
         else {
-            resultDisplay.textContent = resultDisplay.textContent + num;
-            resultDisplay.textContent = resultDisplay.textContent;
+            let newStr = resultDisplay.textContent + num;
+            console.log(newStr);
+            console.log(addCommas(newStr));
+            resultDisplay.textContent = addCommas(newStr);
         }
     })
 });
 
 plusBtn.addEventListener('click', () => {
-    previousNum = Number(resultDisplay.textContent);
-    expressionDisplay.textContent = `${previousNum} +`
+    expressionDisplay.textContent = `${resultDisplay.textContent} +`
+    previousNum = Number(removeCommas(resultDisplay.textContent));
     resultDisplay.textContent = "0";
 });
 
 subtractBtn.addEventListener('click', () => {
-    previousNum = Number(resultDisplay.textContent);
+    previousNum = Number(removeCommas(resultDisplay.textContent));
     expressionDisplay.textContent = `${previousNum} -`
     resultDisplay.textContent = "0";
 });
 
 multiplyBtn.addEventListener('click', () => {
-    previousNum = Number(resultDisplay.textContent);
+    previousNum = Number(removeCommas(resultDisplay.textContent));
     expressionDisplay.textContent = `${previousNum} x`
     resultDisplay.textContent = "0";
 });
 
 divideBtn.addEventListener('click', () => {
-    previousNum = Number(resultDisplay.textContent);
+    previousNum = Number(removeCommas(resultDisplay.textContent));
     expressionDisplay.textContent = `${previousNum} /`
     resultDisplay.textContent = "0";
 });
-
-
 
 
 equalBtn.addEventListener('click', () => {
