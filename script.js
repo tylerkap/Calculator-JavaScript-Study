@@ -43,21 +43,40 @@ function addCommas(string) {
 
         string = removeCommas(string);
     }
+
+    
     
     if (string.length > 3) {
         let count = 0;
-        
-        
-        for (let i = string.length - 1; i >= 1; i--) {
-            if (count === 2) {
-                string = string.slice(0, i) + ',' + string.slice(i);
-                count = 0;
+        let size = string.indexOf(".");
+
+        if (string.includes(".")) {
+
+            for (let i = size - 1; i >= 1; i--) {
+                if (count === 2) {
+                    string = string.slice(0, i) + ',' + string.slice(i);
+                    count = 0;
+                }
+                else {
+                    count++
+                }
             }
-            else {
-                count++
+
+
+        }
+        else {
+
+            for (let i = string.length - 1; i >= 1; i--) {
+                if (count === 2) {
+                    string = string.slice(0, i) + ',' + string.slice(i);
+                    count = 0;
+                }
+                else {
+                    count++
+                }
             }
         }
-
+        
         return string;
     }
     else {
