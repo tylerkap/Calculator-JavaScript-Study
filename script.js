@@ -234,12 +234,12 @@ decimalBtn.addEventListener('click', () => {
 
 squareRootBtn.addEventListener('click', () => {
     let result = 0;
-    let num = Number(resultDisplay.textContent);
+    let num = Number(removeCommas(resultDisplay.textContent));
     
     if (num >= 0) {
         result = Math.sqrt(num);
-        expressionDisplay.textContent = `sqrt(${num}) =`;
-        resultDisplay.textContent = result.toString();
+        expressionDisplay.textContent = `sqrt(${resultDisplay.textContent}) =`;
+        resultDisplay.textContent = addCommas(result.toString());
     }
     else {
         expressionDisplay.textContent = "Enter a positve number";
@@ -247,30 +247,30 @@ squareRootBtn.addEventListener('click', () => {
 });
 
 powerBtn.addEventListener('click', () => {
-    previousNum = Number(resultDisplay.textContent);
-    expressionDisplay.textContent = `${previousNum} ^`
+    expressionDisplay.textContent = `${resultDisplay.textContent} ^`
+    previousNum = Number(removeCommas(resultDisplay.textContent));
     resultDisplay.textContent = "0";
 })
 
 fractionBtn.addEventListener('click', () => {
-    let num = Number(resultDisplay.textContent);
+    let num = Number(removeCommas(resultDisplay.textContent));
     
     if (num !== 0) {
         let result = 1 / num;
         //expressionDisplay.textContent = `1 / ${num} =`;
-        resultDisplay.textContent = result.toString();
+        resultDisplay.textContent = addCommas(result.toString());
     }
 
 })
 
 percentageBtn.addEventListener('click', () => {
-    let num = Number(resultDisplay.textContent);
+    let num = Number(removeCommas(resultDisplay.textContent));
    
     if (num > 0) {
         let result = num / 100;
     
         //expressionDisplay.textContent = `${num} / 100 =`;
-        resultDisplay.textContent = result.toString();
+        resultDisplay.textContent = addCommas(result.toString());
     }
 })
 
@@ -304,20 +304,20 @@ plusBtn.addEventListener('click', () => {
 });
 
 subtractBtn.addEventListener('click', () => {
+    expressionDisplay.textContent = `${resultDisplay.textContent} -`;
     previousNum = Number(removeCommas(resultDisplay.textContent));
-    expressionDisplay.textContent = `${previousNum} -`
     resultDisplay.textContent = "0";
 });
 
 multiplyBtn.addEventListener('click', () => {
+    expressionDisplay.textContent = `${resultDisplay.textContent} x`;
     previousNum = Number(removeCommas(resultDisplay.textContent));
-    expressionDisplay.textContent = `${previousNum} x`
     resultDisplay.textContent = "0";
 });
 
 divideBtn.addEventListener('click', () => {
+    expressionDisplay.textContent = `${resultDisplay.textContent} /`
     previousNum = Number(removeCommas(resultDisplay.textContent));
-    expressionDisplay.textContent = `${previousNum} /`
     resultDisplay.textContent = "0";
 });
 
@@ -328,50 +328,49 @@ equalBtn.addEventListener('click', () => {
 
     }
     else if (expressionDisplay.textContent.includes("x")) {
-        currentNum = Number(resultDisplay.textContent);
+        expressionDisplay.textContent += ` ${resultDisplay.textContent} =`;
+        currentNum = Number(removeCommas(resultDisplay.textContent));
         let result = multiply(previousNum, currentNum);
-        resultDisplay.textContent = result.toString();
-        expressionDisplay.textContent += ` ${currentNum} =`;
+        resultDisplay.textContent = addCommas(result.toString());
         currentNum = result;
         previousNum = 0;
     }
     else if (expressionDisplay.textContent.includes("/")) {
-        currentNum = Number(resultDisplay.textContent);
+        expressionDisplay.textContent += ` ${resultDisplay.textContent} =`;
+        currentNum = Number(removeCommas(resultDisplay.textContent));
         let result = division(previousNum, currentNum);
-        resultDisplay.textContent = result.toString();
-        expressionDisplay.textContent += ` ${currentNum} =`;
+        resultDisplay.textContent = addCommas(result.toString());
         currentNum = result;
         previousNum = 0;
     }
     else if (expressionDisplay.textContent.includes("+")) {
-        currentNum = Number(resultDisplay.textContent);
+        expressionDisplay.textContent += ` ${resultDisplay.textContent} =`;
+        currentNum = Number(removeCommas(resultDisplay.textContent));
         let result = addition(previousNum, currentNum);
-        resultDisplay.textContent = result.toString();
-        expressionDisplay.textContent += ` ${currentNum} =`;
+        resultDisplay.textContent = addCommas(result.toString());
         currentNum = result;
         previousNum = 0;
     }
     else if (expressionDisplay.textContent.includes("-")) {
-        currentNum = Number(resultDisplay.textContent);
+        expressionDisplay.textContent += ` ${resultDisplay.textContent} =`;
+        currentNum = Number(removeCommas(resultDisplay.textContent));
         let result = subtraction(previousNum, currentNum);
-        resultDisplay.textContent = result.toString();
-        expressionDisplay.textContent += ` ${currentNum} =`;
+        resultDisplay.textContent = addCommas(result.toString());
+        
         currentNum = result;
         previousNum = 0;
     }
     else if (expressionDisplay.textContent.includes("^")) {
-        currentNum = Number(resultDisplay.textContent);
+        currentNum = Number(removeCommas(resultDisplay.textContent));
         
         if (currentNum >= 0) {
+            expressionDisplay.textContent += ` ${resultDisplay.textContent} =`;
             let result = power(previousNum, currentNum);
-            resultDisplay.textContent = result.toString();
-            expressionDisplay.textContent += ` ${currentNum} =`;
+            resultDisplay.textContent = addCommas(result.toString());
             currentNum = result;
             previousNum = 0;
         }
     }
-   
-   
 });
 
 

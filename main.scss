@@ -22,7 +22,7 @@ body {
     width: 100%;
     height: 0;
 
-    background-color: whitesmoke;
+    background-color: rgb(204, 204, 204);
 
     display: flex;
 }
@@ -125,7 +125,7 @@ body {
                     font-size: 2.5rem;
                     font-weight: 500;
                     padding-right: 10px;
-                    //overflow-x: scroll;
+                    //overflow-x: clip;
 
                     display: flex;
                     justify-content: flex-end;

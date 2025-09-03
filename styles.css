@@ -9,7 +9,7 @@
 body {
   width: 100%;
   height: 0;
-  background-color: whitesmoke;
+  background-color: rgb(204, 204, 204);
   display: flex;
 }
 
